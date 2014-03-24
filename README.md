@@ -21,6 +21,7 @@ Sim.js
 */
 
 
+
 (function(){
 	//Techniques to generate a new constructor without having naming override issue.
 	//So that the object would be named according to the variable's name.
@@ -50,17 +51,13 @@ Sim.js
 		}else if (mode === 1){
 			//approach in Sim.js
 			return assignPrototype(
-				//allocate a new aynom constructor function object
 				function() { SuperClass.call(this); }, //fast access parent items
-				//allocate a new parent object instance as prototype.
 				new SuperClass()
 			);
 		}else if (mode === 2){
 			//approach in MDN, and Three.js
 			return assignPrototype(
-				//allocate a new aynom constructor function object
 				function() { SuperClass.call(this); }, //fast access parent items
-				//allocate a new parent object instance as prototype.
 				Object.create(SuperClass.prototype) //slow creation
 			);
 		}
