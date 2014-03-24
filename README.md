@@ -5,7 +5,7 @@ Produces a new constructor function object that inherit the superclass that does
 
 
 ```js
-"use strict"
+"use strict";
 //Kudos
 /*
 MDN 
@@ -68,7 +68,7 @@ if (typeof Object.create != 'function') {
 			);
 		}else if (mode === 1){
 			//MDN, and Three.js approach
-			//This mode doesnot work with variable based object type naming
+			//DOESNOT Works with variable based naming, but still valid for instanceof testing...
 			//Assign the parent's item into
 			return assignPrototype(
 				function() { SuperClass.call(this); }, //dont have to look at upper prototypal chian
@@ -76,8 +76,8 @@ if (typeof Object.create != 'function') {
 			);
 		}else if (mode === 2){
 			//Approach in Sim.js
+			//Calls SuperClass constructor function twice.
 			//Works with variable based naming
-			//but calls SuperClass constructor function twice.
 			return assignPrototype(
 				function() { SuperClass.call(this); }, //dont have to look at upper prototypal chain
 				new SuperClass() //faster object creation
