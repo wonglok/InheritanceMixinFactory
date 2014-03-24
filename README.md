@@ -5,6 +5,8 @@ Produces a new constructor function object that inherit the superclass that does
 
 
 ```js
+"use strict"
+//Kudos
 /*
 MDN 
 Inheritance Performance **Heads up!**
@@ -42,7 +44,7 @@ if (typeof Object.create != 'function') {
 	//Techniques to generate a new constructor without having naming override issue.
 	//So that the object type would be named according to the variable's name.
 	//i.e.) var EarthApp = inheritFactory(Sim.App,2);
-	//console.log(EarthApp) shows Object Type of EarthApp.
+	//console.log(EarthApp) shows Object Type = EarthApp.
 	
 	//Techniques:	
 	//1. Aynomomous function as a constructor template
@@ -57,7 +59,7 @@ if (typeof Object.create != 'function') {
 		//classical inhritance
 		if (typeof mode === 'undefined' || mode === 0){
 			//Classical inhritance, MDN
-			//Works variable based object type naming
+			//Works with variable based naming
 			return assignPrototype(
 				//allocate a new aynom constructor function object
 				function() {}, 
@@ -70,19 +72,22 @@ if (typeof Object.create != 'function') {
 			//Assign the parent's item into
 			return assignPrototype(
 				function() { SuperClass.call(this); }, //dont have to look at upper prototypal chian
-				Object.create(SuperClass.prototype) //slow creation
+				Object.create(SuperClass.prototype) //slower obj creation than new
 			);
 		}else if (mode === 2){
 			//Approach in Sim.js
-			//Works with naming
+			//Works with variable based naming
 			//but calls SuperClass constructor function twice.
 			return assignPrototype(
-				function() { SuperClass.call(this); }, //
-				new SuperClass()
+				function() { SuperClass.call(this); }, //dont have to look at upper prototypal chain
+				new SuperClass() //faster object creation
 			);
 		}
 	}
 	//export
 	window.inheritFactory = constructorInheritanceFactory;
 })();
+
+
+
 ```
