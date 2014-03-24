@@ -5,11 +5,11 @@ Produces a new constructor function object that inherit the superclass that does
 
 
 ```js
-"use strict"
+"use strict";
 //Kudos
 /*
 MDN 
-Performance
+Inheritance Performance **Heads up!**
 The lookup time for properties that are high up on the prototype chain can have a negative impact on performance, and this may be significant in code where performance is critical. Additionally, trying to access nonexistent properties will always traverse the full prototype chain.
 
 AddyOsmani JS Patterns
@@ -17,6 +17,12 @@ Mixin Pattern
 
 Tony Parisi
 Sim.js
+*/
+
+/*
+//usage:
+var EarthApp = inheritFactory(Sim.App,2);
+console.log((new EarthApp()) instanceof Sim.App);
 */
 
 //MDN Polyfill
@@ -79,5 +85,4 @@ if (typeof Object.create != 'function') {
 	//export
 	window.inheritFactory = constructorInheritanceFactory;
 })();
-
 ```
