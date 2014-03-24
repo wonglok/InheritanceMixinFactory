@@ -5,8 +5,6 @@ Produces a new constructor function object that inherit the superclass that does
 
 
 ```js
-"use strict";
-//Kudos
 /*
 MDN 
 Inheritance Performance **Heads up!**
@@ -43,6 +41,10 @@ if (typeof Object.create != 'function') {
 (function(){
 	//Techniques to generate a new constructor without having naming override issue.
 	//So that the object type would be named according to the variable's name.
+	//i.e.) var EarthApp = inheritFactory(Sim.App,2);
+	//console.log(EarthApp) shows Object Type of EarthApp.
+	
+	//Techniques:	
 	//1. Aynomomous function as a constructor template
 	//2. Use function argument approach instead of a variable for referencing the aynom constructor function.
 	
@@ -55,29 +57,27 @@ if (typeof Object.create != 'function') {
 		//classical inhritance
 		if (typeof mode === 'undefined' || mode === 0){
 			//Classical inhritance, MDN
-			//works variable naming
-			//Calls SuperClass constructor function once.
+			//Works variable based object type naming
 			return assignPrototype(
 				//allocate a new aynom constructor function object
-				function() {}, //fast access parent property
+				function() {}, 
 				//allocate a new parent object instance as prototype.
 				new SuperClass()
 			);
 		}else if (mode === 1){
 			//MDN, and Three.js approach
 			//This mode doesnot work with variable based object type naming
-			//Calls SuperClass constructor function once.
 			//Assign the parent's item into
 			return assignPrototype(
-				function() { SuperClass.call(this); },
+				function() { SuperClass.call(this); }, //dont have to look at upper prototypal chian
 				Object.create(SuperClass.prototype) //slow creation
 			);
 		}else if (mode === 2){
 			//Approach in Sim.js
 			//Works with naming
-			//Calls SuperClass constructor function twice.
+			//but calls SuperClass constructor function twice.
 			return assignPrototype(
-				function() { SuperClass.call(this); },
+				function() { SuperClass.call(this); }, //
 				new SuperClass()
 			);
 		}
