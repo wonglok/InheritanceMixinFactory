@@ -55,7 +55,7 @@ if (typeof Object.create != 'function') {
 		//classical inhritance
 		if (typeof mode === 'undefined' || mode === 0){
 			//Classical inhritance, MDN
-			//works with variable naming
+			//works variable naming
 			//Calls SuperClass constructor function once.
 			return assignPrototype(
 				//allocate a new aynom constructor function object
@@ -65,7 +65,7 @@ if (typeof Object.create != 'function') {
 			);
 		}else if (mode === 1){
 			//MDN, and Three.js approach
-			//This mode doesn't now work with variable based object type naming
+			//This mode doesnot work with variable based object type naming
 			//Calls SuperClass constructor function once.
 			//Assign the parent's item into
 			return assignPrototype(
@@ -74,7 +74,7 @@ if (typeof Object.create != 'function') {
 			);
 		}else if (mode === 2){
 			//Approach in Sim.js
-			//Works with variable naming
+			//Works with naming
 			//Calls SuperClass constructor function twice.
 			return assignPrototype(
 				function() { SuperClass.call(this); },
