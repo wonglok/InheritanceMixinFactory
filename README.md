@@ -15,6 +15,9 @@ The lookup time for properties that are high up on the prototype chain can have 
 
 AddyOsmani JS Patterns
 Mixin Pattern
+
+Tony Parisi
+Sim.js
 */
 
 
